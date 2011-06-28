@@ -249,6 +249,10 @@
 			manualData = self;
 		} else if (self.methodType == GBMethodTypeInstance && source.methodType == GBMethodTypeClass) {
 			return NO;
+		} else if (self.methodType == GBMethodTypeClass && source.methodType == GBMethodTypeInstance) {
+			return NO;
+		} else if (self.methodType == GBMethodTypeProperty && source.methodType == GBMethodTypeClass) {
+			return NO;
 		} else {
 			[NSException raise:@"Failed merging %@ to %@; method type doesn't match!", source, self];
 		}
